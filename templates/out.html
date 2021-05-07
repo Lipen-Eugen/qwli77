@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Все записи</title>
+    <link rel="stylesheet" href="{% static '/base.css' %}">
+</head>
+<body>
+
+<div >
+    <a href="{% url 'mytest:map' %}"><button>Карта</button></a>   <a href="{% url 'mytest:outmap' %}"><button>Вывод координат на карту</button></a><h2>Все записи</h2>
+
+</div>
+
+<table class="table">
+    <thead><tr><td> № точки</td><td>Долгота</td><td>Широта</td></tr></thead>
+    {%for i in out_list%}
+    <tbody><tr><td>{{i.id}}</td><td>{{i.pointerdolgota}}</td><td>{{i.pointershirota}}</td></tr></tbody>
+    {% endfor%}
+</table>
+
+</body>
+</html>

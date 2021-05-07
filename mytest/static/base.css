@@ -1,0 +1,29 @@
+.table {
+	width: 500px;
+	margin-bottom: 20px;
+	border: 2px solid black;
+	border-collapse: collapse;
+	text-align:center;
+	margin: auto;
+}
+
+.table thead {
+    background: #65A6D1;
+}
+
+.table th {
+	font-weight: bold;
+	padding: 5px;
+	background: #efefef;
+}
+
+.table td {
+	border: 2px solid black;
+	padding: 5px;
+}
+
+
+h2 {
+
+    text-align:center;
+}

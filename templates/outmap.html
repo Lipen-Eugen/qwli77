@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+{% load static %}
+{{ STATIC_URL}}
+<html>
+   <head>
+      <title>Leaflet Polygons</title>
+      <link rel = "stylesheet" href = "http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css"/>
+      <script src = "http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+      <script src = "https://code.jquery.com/jquery-3.3.1.min.js"></script>
+      <link rel="stylesheet" href="{% static '/base.css' %}">
+   </head>
+
+   <body>
+   <div class="sub">
+      <a href="{% url 'mytest:out' %}"><button>Таблица координат</button></a>
+      <a href="{% url 'mytest:map' %}"><button>Карта</button></a>
+      <h2>Карта с выводом координат</h2>
+   </div>
+
+      <div id="map" style="   width: 900px;height: 480px; margin: auto;">
+
+      <script type="text/javascript">
+         var mapOptions = {
+            center: [53.90600103934284, 27.558977094555498],
+            zoom: 11
+         }
+
+         var map = new L.map('map', mapOptions);
+
+         var layer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
+         map.addLayer(layer);
+
+
+         let points_json = JSON.parse({{ points_json|safe }})
+
+         for (var i = 0; i < points_json.length; i++)
+         {
+            var obj = points_json[i]
+            new L.Marker([obj.fields.pointerdolgota, obj.fields.pointershirota]).addTo(map);
+         }
+
+
+      </script></div>
+   </body>
+
+</html>
